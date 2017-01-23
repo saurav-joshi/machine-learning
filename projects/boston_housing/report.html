@@ -2294,9 +2294,15 @@ The grid search exhaustively generates candidates from a grid of parameter value
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer: </strong></p>
-<p>Always using one fixed part for training and another fixed part for testing sometimes is a wasteful exercise since the model may perform well for that test set. However by dividing the data into k folds or k equal chunks of the entire dateset we end up with k trained and evaluated models and we have used the entire dataset for validation.</p>
-<p>This is called k-fold cross validation. Finding the average of validation scores gives us a single validation score. It is more reliable than if we had used only one split.</p>
-<p>Grid search without cross validation may result in over fitting as we used validation set is used many number of times. Hence with more grid points we are more likely to find a point that is good only by change. With cross validation , the over fitting problem is eliminated since our effective validation set is large.</p>
+<p>In k-fold cross-validation the dataset is split into K "folds" of equal size.
+This results in each fold acting as the training set K-1 times and as the testing set 1 time. Estimate of out-of-sample performance is done by Average testing performance</p>
+<p>There are many benefits of k-fold cross-validation such as reduced variance for a single iteration on a train/test split and reliable measure of out-of-sample performance than train/test split.</p>
+<p>Hence, with the above benefits of k-fold cross-validation, the most optimal set of parameters for the learning algorithm can be decided by average testing accuracy framework as a benchmark.</p>
+<p>Without cross-validation set when we run grid-search, we would have different sets of optimal parameters as the measure of out-of-sample performance would have a high variance.</p>
+<p>Summary:
+Without k-fold cross-validation the grid search will select hyper-parameter value combinations that measure very well on a specific train-test split but measures poorly otherwise.</p>
+<p>Limitation of k-fold cross-validation:
+k-fold cross-validation requires uniformly distributed data set.</p>
 
 </div>
 </div>
